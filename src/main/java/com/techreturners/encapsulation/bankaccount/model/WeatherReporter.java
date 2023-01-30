@@ -4,8 +4,8 @@ import java.text.MessageFormat;
 
 public class WeatherReporter {
 
-    private String location;
-    private double temperature;
+    private final String location;
+    private final double temperature;
 
     private final String LONDON = "London";
     private final String CAPE_TOWN = "Cape Town";
