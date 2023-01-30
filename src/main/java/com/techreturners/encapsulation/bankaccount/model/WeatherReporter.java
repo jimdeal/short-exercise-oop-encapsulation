@@ -4,31 +4,39 @@ import java.text.MessageFormat;
 
 public class WeatherReporter {
 
-    public String location;
-    public double temperature;
+    private String location;
+    private double temperature;
+
+    private final String LONDON = "London";
+    private final String CAPE_TOWN = "Cape Town";
+    private final String CALIFORNIA = "California";
+    private final int HOT_TEMPERATURE = 30;
+    private final int COLD_TEMPERATURE = 10;
+    private final double TEMP_CONVERT_MULTIPLIER = (9.0 / 5.0);
+    private final int TEMP_CONVERT_ADD = 32;
 
     public WeatherReporter(String location, double temperature) {
         this.location = location;
         this.temperature = temperature;
     }
 
-    public String print() {
+    public String printForLocation() {
 
-        double newTemp = (9.0 / 5.0) * temperature + 32;
-        return MessageFormat.format("I am in {0} and it is {1}. {2}. The temperature in Fahrenheit is {3}.", location, check1(), check2(), newTemp);
+        double newTemp = TEMP_CONVERT_MULTIPLIER * temperature + TEMP_CONVERT_ADD;
+        return MessageFormat.format("I am in {0} and it is {1}. {2}. The temperature in Fahrenheit is {3}.", location, checkBrightnessForLocation(), checkTemperatureIsHotOrCold(), newTemp);
 
     }
 
-    public String check1() {
-        if (location == "London") {
+    public String checkBrightnessForLocation() {
+        if (location.equals(LONDON)) {
 
             return "🌦";
 
-        } else if (location == "California") {
+        } else if (location.equals(CALIFORNIA)) {
 
             return "🌅";
 
-        } else if (location == "Cape Town") {
+        } else if (location.equals(CAPE_TOWN)) {
 
             return "🌤";
 
@@ -36,12 +44,12 @@ public class WeatherReporter {
         return "🔆";
     }
 
-    public String check2() {
-        if (temperature > 30) {
+    public String checkTemperatureIsHotOrCold() {
+        if (temperature > HOT_TEMPERATURE) {
 
             return "It's too hot 🥵!";
 
-        } else if (temperature < 10) {
+        } else if (temperature < COLD_TEMPERATURE) {
 
             return "It's too cold 🥶!";
 
