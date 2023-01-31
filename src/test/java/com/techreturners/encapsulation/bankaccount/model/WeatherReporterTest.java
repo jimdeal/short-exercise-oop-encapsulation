@@ -13,9 +13,18 @@ class WeatherReporterTest {
 
     @org.junit.jupiter.api.Test
     void checkBrightnessForLocation() {
+        WeatherReporter wr = new WeatherReporter("London",23.0);
+        String brightnessReport = wr.checkBrightnessForLocation();
+        String generatedString = "\uD83C\uDF26";
+        assertEquals(brightnessReport,generatedString);
+
     }
 
     @org.junit.jupiter.api.Test
     void checkTemperatureIsHotOrCold() {
+        WeatherReporter wr = new WeatherReporter("London",23.0);
+        String temperatureReport = wr.checkTemperatureIsHotOrCold();
+        String generatedString = "Ahhh...it's just right \uD83D\uDE0A!";
+        assertEquals(temperatureReport,generatedString);
     }
 }
