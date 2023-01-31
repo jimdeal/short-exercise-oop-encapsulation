@@ -30,11 +30,26 @@ Use the following questions to guide your exploration and learning! 🗺
 - Look at the `DodgyBankAccount`, this class is not well-encapsulated.
   Can you note down the problems with how the class is designed, and the ways it is being misused?
   
+>> Public attributes should be private
+>> This would allow un-controlled access to those attributes & so cause security issues
+
+>> Could rewardAmount be a public final instead ?
+
+>> Add in a parameter to addReward : to ensure award amount is known - rather than
+>> being able to be changed (after a user could reset the reward amount themselves)
 
 - Compare and contrast the `DodgyBankAccount` and the `SecureBankAccount`, how is the `SecureBankAccount` different to 
 the `DodgyBankAccount`? How is it designed to prevent it from being misused? Are there instances of better method names
   for clearer abstraction?
-  
+
+>> attributes private
+>> where necessary they are final
+>> magic numbers replaced with constants
+>> debitAmount(..) could be renamed debitAmountFromAccountBalance(..)
+>> addReward(..) could be renamed addRewardToAccountBalance(..)
+>> depositAmount(..) could be renamed depositAmountAndAddCurrentReward(..)
+
+
 ---
 ## 🐸 Extension Challenge
 
@@ -43,7 +58,8 @@ your next challenge is to put your newly minted skills into practice 💪!
   
 - Refactor the `WeatherReporter` class located in the [model](src/main/java/com/techreturners/encapsulation/bankaccount/model) directory.
   
-- You may want to think about Encapsulation here. Do the methods follow the Single Responsibility Principle (SRP)? Are the method names suitable?
+- You may want to think about Encapsulation here. Do the methods follow the Single Responsibility Principle 
+- (SRP)? Are the method names suitable?
   Are there any magic numbers / hardcoded numbers in the code that needs to be represented by a constant?
   Are there better ways to write the code?
   

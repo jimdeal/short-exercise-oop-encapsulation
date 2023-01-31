@@ -28,20 +28,12 @@ public class WeatherReporter {
     }
 
     public String checkBrightnessForLocation() {
-        if (location.equals(LONDON)) {
-
-            return "🌦";
-
-        } else if (location.equals(CALIFORNIA)) {
-
-            return "🌅";
-
-        } else if (location.equals(CAPE_TOWN)) {
-
-            return "🌤";
-
-        }
-        return "🔆";
+        return switch (location) {
+            case LONDON -> "🌦";
+            case CALIFORNIA -> "🌅";
+            case CAPE_TOWN -> "🌤";
+            default -> "🔆";
+        };
     }
 
     public String checkTemperatureIsHotOrCold() {
